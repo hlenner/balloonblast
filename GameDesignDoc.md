@@ -65,7 +65,7 @@ game is started for customization and high score purposes. Additionally, there w
 increments when balloons are popped and lives will be displayed on the interface as well and will
 decrement appropriately
 
-The things I will use(not everything, but as of right now these are the buttons/input:
+The things I will use(not everything, but as of right now these are the buttons/input):
 
 | Object        | For what?           |
 |:-------------:|:-------------------:|
@@ -76,6 +76,6 @@ The things I will use(not everything, but as of right now these are the buttons/
 
 Example layout: 
 
-![game_lenner](layout.jpeg "layout")
+![lenner](layout.jpeg "layout")
 
 
