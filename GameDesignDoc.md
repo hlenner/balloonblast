@@ -74,7 +74,7 @@ The things I will use(not everything, but as of right now these are the buttons/
 | QPushButton   | pause game          |
 | QPushButton   | quit  game          |
 
-Example layout: 
+Example layout:
 
 ![lenner](layout.jpeg "layout")
 
