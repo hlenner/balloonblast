@@ -1,146 +1,75 @@
-<<<<<<< HEAD
 # Game Design Doc
-## 
+## Balloon Blast
 ### Haley Lenner
 #### CSCI102 T/Th 12-150
 
-You can also write in **bold** or _italics_. You can also ~~strike through~~ or write inline `Code Segments`
-
->Blockquotes are done as such.
 **Objects**
 ##### Character 1- main character
-
+>the main character will be the mouse. It will be controlled by the user and act as 
+>a completely normal mouse with clicking capabilities.
 ##### Character 2- background
+>the background will be my one non-moving object. It will be light blue with clouds, mirroring the sky.
 
-##### Character 3- enemy #1
+![alt text](http://www.psdgraphics.com/file/cloudy-sky-cartoon.jpg "Background sky")
 
-##### Character 4- enemy #2
+##### Character 3- enemy #1 birds
+>Level one will have birds flying in the sky as well. They must be avoided because if you click them then you lose
+a life. It will move by using the qt timer and in prewritten patterns that coordinate with the location of balloons for that level.
+![alt text](http://c85c7a.medialib.glogster.com/media/32/32c5232676493d154dc608b27fa601850f0d695d6d0096166901c149707aa1e3/how-to-draw-a-cartoon-bird.jpg "enemy bird")
 
-##### Character 5- powerup
+##### Character 4- enemy #2 airplanes
+>Level two will have a different enemy, an airplane that will also make you lose a life if clicked on **or** if the mouse scrolls over it.
+The mouse must manuever around the airplane because coming in contact with it at all will lose a life. 
 
-##### Character 6- 
+![alt text](http://www.myprivateramblings.com/wp-content/uploads/2008/12/bigstockphoto_cartoon_airplane_774922.jpg "Background sky")
+
+
+##### Character 5- balloon
+>the balloons are the main target, the goal is to clear the field and get rid of all balloons within the view as quickly
+as possible. They will randomly pop up on the screen and continue to do so, getting harder and harder until you beat the level. 
+
+![alt text](http://vector.us/files/images/1/9/196602/helium_blue_balloon_clip_art.jpg "balloon")
+
+##### Character 6- powerup
+>there will be one or two blinking special colored balloons per level that appear and leave the view very quickly and if you click on one of those, you get more points.
+They might also make you gain a life, depending on how often I decide to make them appear.
+
+![alt text](http://www.chicoparty.com/images/products/detail/RedandOrangeAgateBalloon.jpg "powerup balloon")
 
 **How to play**
-
+>It will be an extremely fast paced reaction/clear the field type of game. You have balloons moving
+around slowly on the screen and want to pop them by clicking them with the mouse. Because there is a timer and the goal is 
+to be as fast as possible, there is possibility of clicking the birds accidentally which will make you lose a life.
+ 
 **Score**
 >There will be a score image on the screen, and next to that, a number with the user's score.
->The score will never be negative.
+The score will never be negative, and the faster you finish a level, the more extra points you get.
+Time will be kept. You also get extra points for clicking the small balloons that appear because they are 
+hard to get to in time.
 
 **Lives**
->There will be three lives that will be kept track of by little images in the corner. Three
->small images of the main character will show the lives, and when a life is lost, one of the
-> images will be deleted. When there are 0 images, the user has lost and the game is over.
+>There will be two lives that will be kept track of by little images in the corner. Three
+small images of balloons will show the lives, and when a life is lost, one of the
+images will be deleted. When there are 0 images, the user has lost and the game is over.
 
 **Layout of User Interface**
 >The layout will be similar to the one we used for PA4. There will be a start button, stop button,
-> I will add a pause button, and there will also be a place to add the name of the user before the 
->game is started for customization and high score purposes. 
+I will add a pause button, and there will also be a place to add the name of the user before the 
+game is started for customization and high score purposes. Additionally, there will be a score that
+increments when balloons are popped and lives will be displayed on the interface as well and will
+decrement appropriately
 
-The things I will use:
+The things I will use(not everything, but as of right now these are the buttons/input:
 
-| Object        | For what?     |
-|:-------------:|:-------------:|
-| QLineEdit     | user's name   |
-| QPushButton   | start game    |
-| QPushButton   | pause game    |
-| QPushButton   | quit  game    |
+| Object        | For what?           |
+|:-------------:|:-------------------:|
+| QLineEdit     | enter user's name   |
+| QPushButton   | start game          |
+| QPushButton   | pause game          |
+| QPushButton   | quit  game          |
 
+Example layout: 
 
-
-=======
-# Game Design Document
-This is a place holder for your game design document. You are advised to write your document in [Markdown](http://daringfireball.net/projects/markdown/) and the following section will show you how to write a document using Markdown markup.
-
-Alternativley, you can write your document in plain text if you wish.
-
-----
-
-## Markdown
-Markdown is a human-readable structured plain text format that is used to convert text into HTML. GitHub automatically renders Markdown into HTML.
-
-This is a crash course on how to use Markdown. The following section will show you the plain text used to generate the document shown in the rendering section.
-
-### Code
-
-```
-# Header 1
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-
-You can also write in **bold** or _italics_. You can also ~~strike through~~ or write inline `Code Segments`
-
->Blockquotes are done as such.
-
-Just make sure to separate paragraphs with an emptyline. 
-Otherwise, they are considered in the same paragraph.
-
-You link to [Google](https://www.google.com) as such and lists are written has follows:
-  1. First you indent with two empty spaces.
-  1. Then, you use:
-    * `1.` to signal an ordered (i.e. numbered) list, or
-    * `*`, `-`, `+` to represent an unordered list.
-      1. Make sure to maintain indentation
-      1. As it is used to identify sub-lists
-  1. Numbering and symboles don't matter as they are auto-generated later.
-
-Tables are pretty easy to make:
-
-| Tables        | Are           | Easy          |
-| ------------- |:-------------:| -------------:|
-| left-aligned  | centered      | right-aligned |
-| header are    | bolded and    | centered      |
-| zebra stripes | are neat      | 1             |
+![picture alt](/Desktop/layout.png)
 
 
-Images are added inline by using the following syntax
-![alt text](http://octodex.github.com/images/Professortocat_v2.png "Image Title")
-```
-
-----
-
-### Rendering
-This section shows the rendering of the plain text above.
-
-# Header 1
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-
-You can also write in **bold** or _italics_. You can also ~~strike through~~ or write inline `Code Segments`
-
->Blockquotes are done as such.
->>>>>>> 0e801df47c846986c3b3f851ba7674816ca6c77b
-
-Just make sure to separate paragraphs with an emptyline. 
-Otherwise, they are considered in the same paragraph.
-
-You link to [Google](https://www.google.com) as such and lists are written has follows:
-  1. First you indent with two empty spaces.
-  1. Then, you use:
-    * `1.` to signal an ordered (i.e. numbered) list, or
-    * `*`, `-`, `+` to represent an unordered list.
-      1. Make sure to maintain indentation
-      1. As it is used to identify sub-lists
-  1. Numbering and symboles don't matter as they are auto-generated later.
-
-<<<<<<< HEAD
-
-Images are added inline by using the following syntax
-![alt text](http://octodex.github.com/images/Professortocat_v2.png "Image Title")
-=======
-Tables are pretty easy to make:
-
-| Tables        | Are           | Easy          |
-| ------------- |:-------------:| -------------:|
-| left-aligned  | centered      | right-aligned |
-| header are    | bolded and    | centered      |
-| zebra stripes | are neat      | 1             |
-
-
-Images are added inline by using the following syntax
-![alt text](http://octodex.github.com/images/Professortocat_v2.png "Image Title")
-
->>>>>>> 0e801df47c846986c3b3f851ba7674816ca6c77b
