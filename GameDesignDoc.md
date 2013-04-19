@@ -76,6 +76,6 @@ The things I will use(not everything, but as of right now these are the buttons/
 
 Example layout: 
 
-![picture alt](/Desktop/layout.png)
+![lenner](layout.png "layout")
 
 
