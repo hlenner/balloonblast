@@ -10,19 +10,21 @@
 
 ##### Character 2- background/clouds
 >The sky will be light blue with clouds, mirroring the sky. The clouds will change from white to
- gray to dark gray to black when a life is lost each time, and they move slightly for a cool effect.
+ gray to dark gray to black when a life is lost each time, and they move slightly for a cool effect. When
+ birds come in contact with them, it causes the birds to speed up for that moment and then they slow
+ back down when they are passed the cloud.
 
 ![alt text](http://www.psdgraphics.com/file/cloudy-sky-cartoon.jpg "Clouds")
 
-##### Character 3- enemy #1 birds
+##### Character 3- enemy birds
 >There will be birds flying in the sky as well. They must be avoided because if you click them then you lose
 a life for killing a bird and you also lose a life if the birds hit the balloons. It will move by using the qt timer and in 
 prewritten pattern of moving to the right at a specified speed,
-and speeding up after a certain amount of time in order to make the game more difficult.
+and speeding up after the user gets 100 points in order to make the game more difficult.
 
 ![alt text](http://c85c7a.medialib.glogster.com/media/32/32c5232676493d154dc608b27fa601850f0d695d6d0096166901c149707aa1e3/how-to-draw-a-cartoon-bird.jpg "enemy bird")
 
-##### Character 4- enemy #2 airplanes
+##### Character 4- airplanes
 >When the airplanes appear, they change the direction of the balloons by a factor of -1 so they go in a more straight direction
 as opposed to more towards the right. When another one appears, it changes the direction again by a factor of -1 putting them back 
 in the original direction that they started.
@@ -45,13 +47,14 @@ as possible so the birds don't get them. They will pop up on the screen and floa
 
 >It will be an extremely fast paced reaction/clear the field type of game. You have balloons moving
 around slowly on the screen and want to pop them by clicking them with the mouse. The goal is to get as
-many points as possible before dying. The way you die is if you don't pop the balloons before they get to the birds
-and the birds pop them.
+many points as possible before the birds pop 3 balloons. The way you die is if you don't pop 
+the balloons before they get to the birds and the birds pop them.
  
 **Score**
 
 >There will be a score image on the screen, and next to that, a number with the user's score.
-The score will never be negative, and each balloon will be 10 points. The orange/red balloons are worth 100 points.
+The score will never be negative, and each balloon will be 10 points. The orange/red balloons are worth 100 points 
+and get you to the next level.
 
 **Lives**
 

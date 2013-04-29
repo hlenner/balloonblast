@@ -77,16 +77,13 @@ void MainWindow:: newGameClicked() {
         l3->setX(175);
         l3->setY(730);
         scene->addItem(l3);
-
     }
 }
-void MainWindow:: changeEverything(Abstract *a, int x, int y) {
-    e=new Powerup(x, y, powerup, this, scene);
 
-}
 void MainWindow:: Restart() {
     button->setEnabled(false);
     lives=3;
+    dir=1;
     birds.clear();
     clouds.clear();
     planes.clear();
@@ -100,7 +97,6 @@ void MainWindow:: Restart() {
     showlives = new QLabel(view);
     showlives->setText("Lives");
     showlives->setGeometry(25, 620, 60, 30);
-    //cout << "one" << endl;
     score = new QLabel(view);
     score->setText("Score:");
     score->setGeometry(25, 500, 60, 30);
@@ -108,11 +104,9 @@ void MainWindow:: Restart() {
     QString str= QString::fromStdString(s);
     showpts = new QLabel(view);
     showpts->setGeometry(25, 540, 30, 30);
-    //cout << "one" << endl;
     showpts->setText(str);
     cloud = new QPixmap("cloudfix.png");
     f = new Cloud(200, 200, cloud, this, scene);
-    //cout << "one" << endl;
     scene->addItem(f);
     g = new Cloud(450, 300, cloud, this, scene);
     scene->addItem(g);
@@ -121,7 +115,6 @@ void MainWindow:: Restart() {
     i = new Cloud(650, 200, cloud, this, scene);
     scene->addItem(i);
     clouds.push_back(f);
-    cout << "one" << endl;
     clouds.push_back(g);
     clouds.push_back(h);
     clouds.push_back(i);
@@ -135,20 +128,17 @@ void MainWindow:: Restart() {
     l2->setScale(.1);
     l2->setX(150);
     l2->setY(730);
-    cout << "one" << endl;
     scene->addItem(l2);
     l3= new QGraphicsPixmapItem(*life);
     l3->setScale(.1);
     l3->setX(175);
     l3->setY(730);
     scene->addItem(l3);
-    cout << "one" << endl;
 }
 void MainWindow:: Pause() {
     if (counter==0) {
         return;
     }
-
     if (timer->isActive()==true) {
         pause->setText("Resume");
         timer->stop();
@@ -161,8 +151,13 @@ void MainWindow:: Pause() {
 
 void MainWindow:: getPoints(Abstract *a) {
     delete showpts;
-    scene->removeItem(a);
     points=points+10;
+    for (unsigned int i=0; i<blues.size(); i++){
+    	if (a == blues[i]){
+    		delete blues[i];
+    		blues.erase(blues.begin()+i); 
+    	}
+    }
     string s = boost::lexical_cast<string>(points);
     QString str= QString::fromStdString(s);
     showpts = new QLabel(view);
@@ -171,8 +166,7 @@ void MainWindow:: getPoints(Abstract *a) {
 }
 void MainWindow:: getBonusPoints(Abstract *a) {
     delete showpts;
-    scene->removeItem(a);
-    //delete a;
+    delete a;
     points=points+100;
     string s = boost::lexical_cast<string>(points);
     QString str= QString::fromStdString(s);
@@ -181,28 +175,27 @@ void MainWindow:: getBonusPoints(Abstract *a) {
     showpts->setText(str);
 }
 void MainWindow:: checkCollision() {
-//cout << "bird size: " << birds.size() << endl;
-//cout << "balloon size: " << blues.size() << endl;
     for (unsigned int i=0; i<blues.size(); i++) {
-        for (unsigned int j=0; j<birds.size(); j++) {    
-            if (blues[i]->collidesWithItem(birds[j], Qt::IntersectsItemShape) && blues[i]->getY()>0) {
-            //cout << "i: "<<i << endl;
-            //cout << "j: "<<j << endl;
-                //scene->removeItem(blues[i]);
-                loseLife(blues[i]);
+        for (unsigned int j=0; j<birds.size(); j++) {  
+            if (blues[i]->collidesWithItem(birds[j], Qt::IntersectsItemShape) && blues[i]) {
+                loseLife();
                 delete blues[i];
                 blues.erase(blues.begin()+i); 
-                //cout << "collision" << endl;
-                
                 return;
             }
         }
     }
 }
 
-void MainWindow:: level2() {
-    scene->clear();
-
+void MainWindow::checkCloudCollision(){
+    for (unsigned int i=0; i<clouds.size(); i++) {
+        for (unsigned int j=0; j<birds.size(); j++) {
+            if (clouds[i]->collidesWithItem(birds[j], Qt::IntersectsItemShape)) {
+            	birds[j]->movefast();
+                return;
+            }
+        }
+    }
 }
 void MainWindow:: handleTimer() {	
    
@@ -210,8 +203,8 @@ void MainWindow:: handleTimer() {
     name->show();
     score->show();
     showlives->show();
-//cout << "one" << endl;
     showpts->show();
+    checkCloudCollision();
     checkCollision();
     if (lives==3 && counter % 100 == 0) {
         f->moveright();
@@ -224,6 +217,7 @@ void MainWindow:: handleTimer() {
         g->moveleft();
         h->moveleft();
         i->moveleft();
+        
     }
     if (lives==2 && counter % 100 == 0) {
         j->moveright();
@@ -250,16 +244,16 @@ void MainWindow:: handleTimer() {
         q->moveleft();
     }
     
-    if (points>=50)
+    if (points>=100)
     {   
         for (unsigned int i=0; i<birds.size(); i++) {
             if (birds[i]->getX()>1200){
-            	//scene->removeItem(birds[i]);
             	delete birds[i];
             	birds.erase(birds.begin()+i);
             }
             else{
-            birds[i]->movefast(WINDOW_MAX_X, WINDOW_MAX_Y);
+            birds[i]->movefast();
+
             }
         }
         for (unsigned int i=0; i<blues.size(); i++) {
@@ -268,7 +262,7 @@ void MainWindow:: handleTimer() {
             	 blues.erase(blues.begin()+i);
             	}
             	else{
-            blues[i]->movefast(WINDOW_MAX_X, WINDOW_MAX_Y, dir);
+            blues[i]->movefast(dir);
             }
         }
 	
@@ -279,7 +273,7 @@ void MainWindow:: handleTimer() {
             	 planes.erase(planes.begin()+i);
             	}
             	else{
-            planes[i]->movefast(WINDOW_MAX_X, WINDOW_MAX_Y);
+            planes[i]->movefast();
             }
         }
         if (counter% 50==0) {
@@ -320,34 +314,30 @@ void MainWindow:: handleTimer() {
 	
         for (unsigned int i=0; i<birds.size(); i++) {
             if (birds[i]->getX()>1200){
-            	//scene->removeItem(birds[i]);
             	delete birds[i];
             	birds.erase(birds.begin()+i);
             }
             else{
-            birds[i]->move(WINDOW_MAX_X, WINDOW_MAX_Y);
+            birds[i]->move();
             }
         }
         for (unsigned int i=0; i<blues.size(); i++) {
            if (blues[i]->getX()>1200 || blues[i]->getY()<0){
-           //scene->removeItem(blues[i]);
-           	delete blues[i];
+           	 delete blues[i];
             	 blues.erase(blues.begin()+i);
             	}
             	else{
-            blues[i]->move(WINDOW_MAX_X, WINDOW_MAX_Y, dir);
+            blues[i]->move(dir);
             }
         }
-	
         for (unsigned int i=0; i<planes.size(); i++) {
          if (planes[i]->getX()<0 || planes[i]->getY()<0){
-         	//scene->removeItem(planes[i]);
-           	delete planes[i];
+           	 delete planes[i];
           	 dir=dir*-1;
             	 planes.erase(planes.begin()+i);
             	}
             	else{
-            planes[i]->move(WINDOW_MAX_X, WINDOW_MAX_Y);
+            planes[i]->move();
             }
         }
         if (counter% 150==0) {
@@ -361,7 +351,6 @@ void MainWindow:: handleTimer() {
             int x = rand() %1000 + 250 ;
             int y = 750;
             c = new Blue(x, y, blue, this, scene);
-            c->setTransformOriginPoint(0,0);
             scene->addItem(c);
             blues.push_back(c);
         }
@@ -392,7 +381,7 @@ void MainWindow::gameOver() {
     message->show();
     timer->stop();
 }
-void MainWindow:: loseLife(Abstract *a) {
+void MainWindow:: loseLife() {
     lives=lives-1;
     if (lives==0) {
         delete o;
@@ -405,6 +394,10 @@ void MainWindow:: loseLife(Abstract *a) {
         t = new Cloud(450, 300, cloud, this, scene);
         u= new Cloud(800, 200, cloud, this, scene);
         v= new Cloud(650, 200, cloud, this, scene);
+        clouds.push_back(s);
+        clouds.push_back(t);
+        clouds.push_back(u);
+        clouds.push_back(v);
         scene->addItem(s);
         scene->addItem(t);
         scene->addItem(u);
@@ -412,6 +405,7 @@ void MainWindow:: loseLife(Abstract *a) {
         gameOver();
     }
     if (lives ==1) {
+    	clouds.clear();
         delete j;
         delete k;
         delete l;
@@ -422,12 +416,17 @@ void MainWindow:: loseLife(Abstract *a) {
         p= new Cloud(450, 300, cloud, this, scene);
         q= new Cloud(800, 200, cloud, this, scene);
         r= new Cloud(650, 200, cloud, this, scene);
+        clouds.push_back(o);
+        clouds.push_back(p);
+        clouds.push_back(q);
+        clouds.push_back(r);
         scene->addItem(o);
         scene->addItem(p);
         scene->addItem(q);
         scene->addItem(r);
     }
     if (lives ==2) {
+    	clouds.clear();
         delete f;
         delete g;
         delete h;
@@ -438,11 +437,16 @@ void MainWindow:: loseLife(Abstract *a) {
         k = new Cloud(450, 300, gcloud, this, scene);
         l= new Cloud(800, 200, gcloud, this, scene);
         m= new Cloud(650, 200, gcloud, this, scene);
+        clouds.push_back(j);
+        clouds.push_back(k);
+        clouds.push_back(l);
+        clouds.push_back(m);
         scene->addItem(j);
         scene->addItem(k);
         scene->addItem(l);
         scene->addItem(m);
     }
+    
 }
 MainWindow::MainWindow() {
 	dir=1;
@@ -456,17 +460,11 @@ MainWindow::MainWindow() {
     view->setFixedSize( WINDOW_MAX_X*2.5, WINDOW_MAX_Y*2.5 );
     view->setWindowTitle( "Balloon Blast");
     scene->setSceneRect(450, 325, 450, 325);
-    //view->setAlignment( Qt::AlignLeft | Qt::AlignTop );
 
     //This is how we do animation. We use a timer with an interval of 5 milliseconds
     //We connect the signal from the timer - the timeout() function to a function
     //of our own - called handleTimer - which is in this same MainWindow class
 
-    //bird->addItem(view);
-    //cloud = new QPixmap();
-    // Cloud *c = new Cloud(50,100,cloud);
-    //blue = new QPixmap();
-    //Blue *b = new Blue(50, 150, blue);
     timer = new QTimer(this);
     plane = new QPixmap("planefix.png");
     powerup = new QPixmap("powerupfix.png");

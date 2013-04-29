@@ -23,8 +23,8 @@ class Plane : public Abstract
   Plane();
   Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene);
   MainWindow *gui;
-  void movefast(int x, int y);
-  void move(int x, int y);
+  void movefast();
+  void move();
   int getX();
   int getY();
   /** Destructor */

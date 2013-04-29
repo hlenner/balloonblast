@@ -30,14 +30,14 @@ Bird::~Bird(){
 double Bird::getX(){
 	return _x;
 }
-void Bird::move(int x, int y ){
+void Bird::move(){
 	_x=_x+0.5;
 	//cout << "x" << _x<<endl;
 	this->moveBy(0.5, 0);
     	
     
 }
-void Bird::movefast(int x, int y){
+void Bird::movefast(){
     this->moveBy(1.2, 0);
     _x=_x+1.2;
     
@@ -47,7 +47,7 @@ void Bird::loseLife(){
 }
 void Bird::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
-        gui->loseLife(this);
+        gui->loseLife();
     }
 }
 void Bird::blowup(){

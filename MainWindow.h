@@ -51,10 +51,8 @@ public:
     void getPoints(Abstract *a);
     void getBonusPoints(Abstract *a);
     int points;
-    void changeEverything(Abstract *a, int x, int y);
     void checkCollision();
     int objects;
-    void level2();
     vector<Blue*> blues;
     vector<Plane*> planes;
     vector<Cloud*> clouds;
@@ -68,7 +66,8 @@ public:
     QLabel *num;
     QLabel *showpts;
     QLabel *name;
-     void loseLife(Abstract *a);
+    void checkCloudCollision();
+     void loseLife();
      int dir;
 
 private:

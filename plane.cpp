@@ -31,12 +31,12 @@ Plane::Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene)
 Plane::~Plane(){
 
 }
-void Plane::move(int x, int y){
+void Plane::move(){
 	this->moveBy(-1, -1);
 	_x=_x-1;
 	_y=_y-1;
 }
-void Plane::movefast(int x, int y){
+void Plane::movefast(){
 	this->moveBy(-2, -2); 
 	_x=_x-2;
 	_y=_y-2;    
