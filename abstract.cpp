@@ -38,12 +38,12 @@ cout << "HI" << endl;
 	cout << "Points: " <<gui->points<< endl;
     }
 }*/
-void Abstract::loseLife(){
+//void Abstract::loseLife(){
 
-}
-int Abstract::getX(){
+//}
+/*int Abstract::getX(){
 return x_;
 }
 int Abstract::getY(){
 return y_;
-}
+}*/

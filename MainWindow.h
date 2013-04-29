@@ -12,6 +12,7 @@
 #include "blue.h"
 #include "cloud.h"
 #include "plane.h"
+#include "Powerup.h"
 #include <QTimeLine>
 #include <QRadioButton>
 #include <QGraphicsItemAnimation>
@@ -31,11 +32,14 @@
 
 using namespace std;
 
-class MainWindow : public QWidget {
+class Blue;
+
+class MainWindow : public QMainWindow {
     Q_OBJECT
     
 public:
 /**constructor */
+	
     explicit MainWindow();
     ~MainWindow();/**destructor*/
     void show();/**shows everything in the view*/
@@ -44,18 +48,28 @@ public:
     void mainWindowloselife(Abstract *a);
     QLineEdit *size;/**size pointer*/
     int lives;
+    void getPoints(Abstract *a);
+    void getBonusPoints(Abstract *a);
     int points;
+    void changeEverything(Abstract *a, int x, int y);
+    void checkCollision();
     int objects;
+    void level2();
     vector<Blue*> blues;
     vector<Plane*> planes;
     vector<Cloud*> clouds;
     vector<Bird*> birds; 
     QGraphicsPixmapItem *l2;
     QGraphicsPixmapItem *l3;
+    QGraphicsPixmapItem *power;
     QGraphicsPixmapItem *l1;
     QLabel *score;
     QLabel *showlives;
     QLabel *num;
+    QLabel *showpts;
+    QLabel *name;
+     void loseLife(Abstract *a);
+     int dir;
 
 private:
     QGraphicsScene *scene;/**scene to display GUI*/
@@ -64,20 +78,45 @@ private:
     QPushButton *button;/**start button connected to newGame*/
     QPushButton *quit;/**quit button, exits out*/
     QPushButton *pause;
+    QPushButton *restart;
     QLineEdit *user;
     QPixmap *bird;
     QPixmap *cloud;
+    QPixmap *gcloud;
     QPixmap *blue;
     QPixmap *life;
     QPixmap *plane;
+    QPixmap *powerup;
+    Bird *b;
+    Blue *c;
+    Plane *d;
+    Powerup *e;
+    Cloud *f;
+    Cloud *g;
+    Cloud *h;
+    Cloud *i;
+    Cloud *j;
+    Cloud *k;
+    Cloud *l;
+    Cloud *m;
+    Cloud *o;
+    Cloud *p;
+    Cloud *q;
+    Cloud *r;
+    Cloud *s;
+    Cloud *t;
+    Cloud *u;
+    Cloud *v;
+    QMessageBox *message;
     
 
 public slots:
  
     void newGameClicked();
     void Pause();
-    void loseLife();
     void handleTimer();
+    void Restart();
+    
 };
 
 #endif // MAINWINDOW_H

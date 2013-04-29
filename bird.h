@@ -21,12 +21,13 @@ class Bird : public Abstract
 {
  public:
   Bird();
-  Bird(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene, QGraphicsPixmapItem *bb);
+  Bird(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene);
   MainWindow *gui;
   void move(int x, int y);
+  void movefast(int x, int y);
   void loseLife();
   QGraphicsPixmapItem *xx;
-  
+  double getX();
   /** Destructor */
   ~Bird();
 
@@ -36,6 +37,7 @@ class Bird : public Abstract
   void blowup();
  private:
   QPixmap *bd;
+  double _x;
   
 };
 

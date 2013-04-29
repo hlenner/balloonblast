@@ -16,19 +16,30 @@ using namespace std;
 Bird::Bird(){
 
 }
-Bird::Bird(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene, QGraphicsPixmapItem *bb) : Abstract(x, y, image, t, scene){
+Bird::Bird(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t, scene){
 	bd=image;
 	gui=t;
-	xx=bb;
+	_x=x;
+	setScale(.2);
+        setPos(x, y);	
+	
 }
 Bird::~Bird(){
 
 }
-
-
+double Bird::getX(){
+	return _x;
+}
 void Bird::move(int x, int y ){
-    this->moveBy(0.5, 0);
-    xx->moveBy(0.5,0);
+	_x=_x+0.5;
+	//cout << "x" << _x<<endl;
+	this->moveBy(0.5, 0);
+    	
+    
+}
+void Bird::movefast(int x, int y){
+    this->moveBy(1.2, 0);
+    _x=_x+1.2;
     
 }
 void Bird::loseLife(){
@@ -36,7 +47,7 @@ void Bird::loseLife(){
 }
 void Bird::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
-        gui->mainWindowloselife(this);
+        gui->loseLife(this);
     }
 }
 void Bird::blowup(){

@@ -20,13 +20,13 @@ class Cloud : public Abstract
  public:
   Cloud();
   Cloud(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene);
-  void loseLife();
+  void moveright();
+  void moveleft();
   /** Destructor */
   ~Cloud();
 
   //bool win();
   
-  void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
  private:
   

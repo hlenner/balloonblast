@@ -23,11 +23,10 @@ class Abstract : public QGraphicsPixmapItem
   MainWindow *gui;
   /** Destructor */
   ~Abstract();
-  virtual void loseLife() = 0;
-  int getX();
-  int getY();
+  //virtual void loseLife() = 0;
+  //int getX();
+  //int getY();
   //virtual void move(int x, int y)=0;
-
  protected:
   int x_;
   int y_;

@@ -7,35 +7,45 @@
 #include "plane.h"
 #include <QGraphicsSceneMouseEvent>
 #include <string>
+#include <QKeyEvent>
+#include <QWidget>
 #include <QString>
 #include "MainWindow.h"
 #include <QGraphicsScene>
+#include <QPixmap>
 
 using namespace std;
 
 Plane::Plane(){
 
 }
-Plane::Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene, QGraphicsPixmapItem *bb) : Abstract(x, y, image, t, scene){
+Plane::Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t, scene){
 	bd=image;
 	gui=t;
-	xx=bb;
+	setScale(.15);
+        setPos(x, y);
+        _x=x;
+        _y=y;
+        _s=0;
 }
 Plane::~Plane(){
 
 }
 void Plane::move(int x, int y){
-this->moveBy(-0.5, -0.5);
-    xx->moveBy(-0.5, -0.5);
+	this->moveBy(-1, -1);
+	_x=_x-1;
+	_y=_y-1;
 }
-void Plane::loseLife(){
+void Plane::movefast(int x, int y){
+	this->moveBy(-2, -2); 
+	_x=_x-2;
+	_y=_y-2;    
+}
 
+int Plane::getX(){
+return _x;
 }
-void Plane::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-    if (event->button() == Qt::LeftButton) {
-        gui->mainWindowloselife(this);
-    }
+int Plane::getY(){
+return _y;
 }
-void Plane::blowup(){
-	
-}
+

@@ -21,20 +21,23 @@ class Plane : public Abstract
 {
  public:
   Plane();
-  Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene, QGraphicsPixmapItem *bb);
+  Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene);
   MainWindow *gui;
+  void movefast(int x, int y);
   void move(int x, int y);
-  void loseLife();
-  QGraphicsPixmapItem *xx;
+  int getX();
+  int getY();
   /** Destructor */
   ~Plane();
 
   //bool win();
   
-  void mousePressEvent(QGraphicsSceneMouseEvent *event);
-  void blowup();
  private:
   QPixmap *bd;
+  QPixmap* pic;
+  int _x;
+  int _y;
+  int _s;
   
   
 };

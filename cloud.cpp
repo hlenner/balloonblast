@@ -16,17 +16,19 @@ Cloud::Cloud(){
 
 }
 Cloud::Cloud(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t, scene){
-	
+	setX(x);
+        setY(y);
 }
 Cloud::~Cloud(){
 
 }
-void Cloud:: loseLife(){
+void Cloud:: moveleft(){
+this->moveBy(-2, 0);
 
 }
-void Cloud::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-    if (event->button() == Qt::LeftButton) {
-        //timer->start();
-        //gui->MainWindowmoveTile(number, this);
-    }
+void Cloud:: moveright(){
+this->moveBy(2, 0);
+
 }
+
+
