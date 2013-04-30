@@ -14,7 +14,9 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include "abstract.h"
-
+/** The Blue class which sets up the balloon objects 
+@author Haley Lenner
+*/
 class MainWindow;
 
 class Blue : public Abstract {

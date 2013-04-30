@@ -377,7 +377,7 @@ void MainWindow::gameOver() {
     message = new QMessageBox();
     message->setText("YOU LOSE!");
     message->setStandardButtons(QMessageBox::Ok);
-    button->setEnabled(true);
+    button->setEnabled(false);
     message->show();
     timer->stop();
 }

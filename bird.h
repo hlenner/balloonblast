@@ -15,6 +15,10 @@
 #include "abstract.h"
 #include <QPointF>
 
+/** The bird class which sets up the bird object
+@author Haley Lenner
+*/
+
 class MainWindow;
 
 class Bird : public Abstract

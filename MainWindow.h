@@ -26,6 +26,11 @@
 #include <QMessageBox>
 #include <QLabel>
 
+/** The MainWindow class which sets up the game and handles a big part of it, the timer.
+Also stores vectors of the objects and keeps track of number of lives, points, and 
+collisions.
+@author Haley Lenner
+*/
 
 #define WINDOW_MAX_X 450
 #define WINDOW_MAX_Y 325
@@ -67,8 +72,8 @@ public:
     QLabel *showpts;
     QLabel *name;
     void checkCloudCollision();
-     void loseLife();
-     int dir;
+    void loseLife();
+    int dir;
 
 private:
     QGraphicsScene *scene;/**scene to display GUI*/

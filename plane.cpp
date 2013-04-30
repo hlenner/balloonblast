@@ -26,7 +26,6 @@ Plane::Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene)
         setPos(x, y);
         _x=x;
         _y=y;
-        _s=0;
 }
 Plane::~Plane(){
 

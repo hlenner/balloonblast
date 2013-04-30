@@ -15,6 +15,12 @@
 #include "abstract.h"
 #include <QGraphicsScene>
 
+/** The MainWindow class which sets up the game and handles a big part of it, the timer.
+Also stores vectors of the objects and keeps track of number of lives, points, and 
+collisions.
+@author Haley Lenner
+*/
+
 class MainWindow;
 
 class Plane : public Abstract
@@ -29,15 +35,12 @@ class Plane : public Abstract
   int getY();
   /** Destructor */
   ~Plane();
-
-  //bool win();
   
  private:
   QPixmap *bd;
   QPixmap* pic;
   int _x;
   int _y;
-  int _s;
   
   
 };
