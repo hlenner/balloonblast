@@ -18,7 +18,7 @@ Abstract::Abstract(){
 	
 	
 }
-Abstract::Abstract(int x, int y, QPixmap *image, MainWindow *t, QGraphicsScene *scene) {
+Abstract::Abstract(int x, int y, QPixmap *image, MainWindow *t) {
 	//pic = new QPixmap;
 	//pic = image;
 	setPixmap(*image);
@@ -33,7 +33,7 @@ cout << "HI" << endl;
     if (event->button() == Qt::LeftButton) {
     cout << "HI" << endl;
     gui->mainWindowloselife(this);
-	/*scene2->removeItem(this);
+	scene2->removeItem(this);
 	gui->points=gui->points+10;
 	cout << "Points: " <<gui->points<< endl;
     }

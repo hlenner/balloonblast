@@ -19,7 +19,7 @@ using namespace std;
 Plane::Plane(){
 
 }
-Plane::Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t, scene){
+Plane::Plane(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t){
 	bd=image;
 	gui=t;
 	setScale(.15);

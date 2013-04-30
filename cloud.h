@@ -24,6 +24,7 @@ class Cloud : public Abstract
   void moveleft();
   /** Destructor */
   ~Cloud();
+  QGraphicsScene *scene2;
 
   //bool win();
   

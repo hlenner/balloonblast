@@ -15,9 +15,10 @@ using namespace std;
 Cloud::Cloud(){
 
 }
-Cloud::Cloud(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t, scene){
+Cloud::Cloud(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t){
 	setX(x);
         setY(y);
+        scene2=scene;
 }
 Cloud::~Cloud(){
 

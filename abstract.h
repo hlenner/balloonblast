@@ -19,7 +19,7 @@ class Abstract : public QGraphicsPixmapItem
 {
  public:
   Abstract();
-  Abstract(int x, int y, QPixmap *image, MainWindow *t, QGraphicsScene *scene);
+  Abstract(int x, int y, QPixmap *image, MainWindow *t);
   MainWindow *gui;
   /** Destructor */
   ~Abstract();

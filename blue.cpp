@@ -16,7 +16,7 @@ using namespace std;
 Blue::Blue(){
 
 }
-Blue::Blue(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t, scene){
+Blue::Blue(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t){
 	bd=image;
 	gui=t;
 	scene2=scene;

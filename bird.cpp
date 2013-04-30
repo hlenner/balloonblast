@@ -16,7 +16,7 @@ using namespace std;
 Bird::Bird(){
 
 }
-Bird::Bird(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t, scene){
+Bird::Bird(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t){
 	bd=image;
 	gui=t;
 	_x=x;

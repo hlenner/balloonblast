@@ -16,7 +16,7 @@ using namespace std;
 Powerup::Powerup(){
 
 }
-Powerup::Powerup(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t, scene){
+Powerup::Powerup(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene) : Abstract(x, y, image, t){
 	bd=image;
 	gui=t;
 	setScale(.08);
