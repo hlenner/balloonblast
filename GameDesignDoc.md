@@ -51,8 +51,7 @@ many points as possible before the birds pop 3 balloons. The way you die is if y
 the balloons before they get to the birds and the birds pop them. There are now levels where
 hitting 50 points gets you to level 2 and hitting 100 points gets you to level 3. The difficulty
 increases in these levels as I add birds more frequently and change the speed of the objects to 
-make it more difficult as you get to each level. Additionally, I did the high score table which works
-perfectly unless there is a tie in the high score which it messes up but I did not figure that out.
+make it more difficult as you get to each level. Additionally, I did the high score table at the end.
  
 **Score**
 
