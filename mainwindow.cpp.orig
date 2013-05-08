@@ -88,7 +88,7 @@ void MainWindow:: Restart() {
     }
     else {
     delete name;
-        scene->setBackgroundBrush(QColor(173,216,250));
+	scene->setBackgroundBrush(QColor(173,216,250));
         button->setEnabled(false);
         read();
         if (gameov==true) {
@@ -113,7 +113,6 @@ void MainWindow:: Restart() {
                 delete name1;
             }
         }
-        
         gameov=false;
         name=new QLabel(view);
         name->setText("Player: "+user->text());
@@ -136,6 +135,8 @@ void MainWindow:: Restart() {
         score = new QLabel(view);
         score->setText("Score:");
         score->setGeometry(25, 500, 60, 30);
+        // scores.push_back(points);
+        //names.push_back();
         string s = boost::lexical_cast<string>(points);
         QString str= QString::fromStdString(s);
         showpts = new QLabel(view);
@@ -214,11 +215,11 @@ void MainWindow:: getBonusPoints(Abstract *a) {
 
 void MainWindow:: checkCollision() {
     for (unsigned int i=0; i<blues.size(); i++) {
-        for (unsigned int j=0; j<birds.size(); j++) {
+        for (unsigned int j=0; j<birds.size(); j++) {  
             if (blues[i]->collidesWithItem(birds[j], Qt::IntersectsItemShape) && blues[i]) {
                 loseLife();
                 delete blues[i];
-                blues.erase(blues.begin()+i);
+                blues.erase(blues.begin()+i); 
                 return;
             }
         }
@@ -234,8 +235,8 @@ void MainWindow::checkCloudCollision() {
         }
     }
 }
-void MainWindow:: handleTimer() {
-
+void MainWindow:: handleTimer() {	
+   
     counter++;
     name->show();
     score->show();
@@ -254,7 +255,7 @@ void MainWindow:: handleTimer() {
         g->moveleft();
         h->moveleft();
         i->moveleft();
-
+        
     }
     if (lives==2 && counter % 100 == 0) {
         j->moveright();
@@ -280,38 +281,38 @@ void MainWindow:: handleTimer() {
         p->moveleft();
         q->moveleft();
     }
-
+    
     if (points>=100)
-    {
-        scene->setBackgroundBrush(QColor(100,216,0));
+    {   
+    scene->setBackgroundBrush(QColor(100,216,0));
         for (unsigned int i=0; i<birds.size(); i++) {
-            if (birds[i]->getX()>1200) {
-                delete birds[i];
-                birds.erase(birds.begin()+i);
+            if (birds[i]->getX()>1200){
+            	delete birds[i];
+            	birds.erase(birds.begin()+i);
             }
-            else {
-                birds[i]->level3();
+            else{
+            birds[i]->level3();
 
             }
         }
         for (unsigned int i=0; i<blues.size(); i++) {
-            if (blues[i]->getX()>1200 || blues[i]->getY()<0) {
-                delete blues[i];
-                blues.erase(blues.begin()+i);
-            }
-            else {
-                blues[i]->level3(dir);
+           if (blues[i]->getX()>1200 || blues[i]->getY()<0){
+           	delete blues[i];
+            	 blues.erase(blues.begin()+i);
+            	}
+            	else{
+            blues[i]->level3(dir);
             }
         }
 
         for (unsigned int i=0; i<planes.size(); i++) {
-            if (planes[i]->getX()<0 || planes[i]->getY()<0) {
-                delete planes[i];
-                dir=dir*-1;
-                planes.erase(planes.begin()+i);
-            }
-            else {
-                planes[i]->movefast();
+         if (planes[i]->getX()<0 || planes[i]->getY()<0){
+           	delete planes[i];
+          	 dir=dir*-1;
+            	 planes.erase(planes.begin()+i);
+            	}
+            	else{
+            planes[i]->movefast();
             }
         }
         if (counter% 50==0) {
@@ -346,42 +347,42 @@ void MainWindow:: handleTimer() {
             powers.push_back(e);
         }
         if (counter %8150 == 0) {
-            for (unsigned int i=0; i<powers.size(); i++) {
-                delete powers[i];
-            }
+            for (int i=0; i<powers.size(); i++){
+           	 delete powers[i];
+        }
         }
     }
     else if (points>=50)
-    {
-        scene->setBackgroundBrush(QColor(250,216,250));
+    {   
+    scene->setBackgroundBrush(QColor(250,216,250));
         for (unsigned int i=0; i<birds.size(); i++) {
-            if (birds[i]->getX()>1200) {
-                delete birds[i];
-                birds.erase(birds.begin()+i);
+            if (birds[i]->getX()>1200){
+            	delete birds[i];
+            	birds.erase(birds.begin()+i);
             }
-            else {
-                birds[i]->movefast();
+            else{
+            birds[i]->movefast();
 
             }
         }
         for (unsigned int i=0; i<blues.size(); i++) {
-            if (blues[i]->getX()>1200 || blues[i]->getY()<0) {
-                delete blues[i];
-                blues.erase(blues.begin()+i);
-            }
-            else {
-                blues[i]->movefast(dir);
+           if (blues[i]->getX()>1200 || blues[i]->getY()<0){
+           	delete blues[i];
+            	 blues.erase(blues.begin()+i);
+            	}
+            	else{
+            blues[i]->movefast(dir);
             }
         }
 
         for (unsigned int i=0; i<planes.size(); i++) {
-            if (planes[i]->getX()<0 || planes[i]->getY()<0) {
-                delete planes[i];
-                dir=dir*-1;
-                planes.erase(planes.begin()+i);
-            }
-            else {
-                planes[i]->movefast();
+         if (planes[i]->getX()<0 || planes[i]->getY()<0){
+           	delete planes[i];
+          	 dir=dir*-1;
+            	 planes.erase(planes.begin()+i);
+            	}
+            	else{
+            planes[i]->movefast();
             }
         }
         if (counter% 50==0) {
@@ -416,39 +417,39 @@ void MainWindow:: handleTimer() {
             powers.push_back(e);
         }
         if (counter %8150 == 0) {
-            for (unsigned int i=0; i<powers.size(); i++) {
-                delete powers[i];
-            }
+            for (int i=0; i<powers.size(); i++){
+           	 delete powers[i];
+        }
         }
     }
     else {
 
         for (unsigned int i=0; i<birds.size(); i++) {
-            if (birds[i]->getX()>1200) {
-                delete birds[i];
-                birds.erase(birds.begin()+i);
+            if (birds[i]->getX()>1200){
+            	delete birds[i];
+            	birds.erase(birds.begin()+i);
             }
-            else {
-                birds[i]->move();
+            else{
+            birds[i]->move();
             }
         }
         for (unsigned int i=0; i<blues.size(); i++) {
-            if (blues[i]->getX()>1200 || blues[i]->getY()<0) {
-                delete blues[i];
-                blues.erase(blues.begin()+i);
-            }
-            else {
-                blues[i]->move(dir);
+           if (blues[i]->getX()>1200 || blues[i]->getY()<0){
+           	 delete blues[i];
+            	 blues.erase(blues.begin()+i);
+            	}
+            	else{
+            blues[i]->move(dir);
             }
         }
         for (unsigned int i=0; i<planes.size(); i++) {
-            if (planes[i]->getX()<0 || planes[i]->getY()<0) {
-                delete planes[i];
-                dir=dir*-1;
-                planes.erase(planes.begin()+i);
-            }
-            else {
-                planes[i]->move();
+         if (planes[i]->getX()<0 || planes[i]->getY()<0){
+           	 delete planes[i];
+          	 dir=dir*-1;
+            	 planes.erase(planes.begin()+i);
+            	}
+            	else{
+            planes[i]->move();
             }
         }
         if (counter% 150==0) {
@@ -480,16 +481,15 @@ void MainWindow:: handleTimer() {
             powers.push_back(e);
         }
         if (counter %1200 == 0) {
-            for (unsigned int i=0; i<powers.size(); i++) {
-                delete powers[i];
-            }
+        for (int i=0; i<powers.size(); i++){
+            delete powers[i];
         }
     }
+}
 }
 
 void MainWindow::showHighScores() {
     int max=0;
-   
     for (unsigned int i=0; i<scores.size(); i++) {
         if (scores[i] > max) {
             max=scores[i];
@@ -501,7 +501,7 @@ void MainWindow::showHighScores() {
             score1=new QLabel(view);
             score1->setGeometry(450, 300, 150, 50);
             score1->setText(str);
-            for (unsigned int d=0; d<scores.size(); d++) {
+            for (int d=0; d<scores.size(); d++) {
                 if (scores[d]==max) {
                     QString nam= QString::fromStdString(names[d]);
                     name1=new QLabel(view);
@@ -537,7 +537,7 @@ void MainWindow::showHighScores() {
                     name2->setGeometry(300, 350, 150, 50);
                     name2->show();
                     score2->show();
-                    scores.erase(scores.begin()+d);
+                    scores.erase (scores.begin()+d);
                     names.erase(names.begin()+d);
                     break;
                 }
@@ -565,10 +565,10 @@ void MainWindow::showHighScores() {
                     QString nam= QString::fromStdString(names[d]);
                     name3=new QLabel(view);
                     name3->setText(nam);
-                    name3->setGeometry(300, 400, 150, 50);
+                    name3->setGeometry(300, 350, 150, 50);
                     name3->show();
                     score3->show();
-                    scores.erase(scores.begin()+d);
+                    scores.erase (scores.begin()+d);
                     names.erase(names.begin()+d);
                     break;
                 }
@@ -619,7 +619,7 @@ void MainWindow::showHighScores() {
             score5->setText(str);
 
             for (unsigned int d=0; d<scores.size(); d++) {
-                if (scores[d]==max5) {
+                if (scores[d]==max4) {
                     QString nam= QString::fromStdString(names[d]);
                     name5=new QLabel(view);
                     name5->setText(nam);
@@ -639,7 +639,7 @@ void MainWindow::gameOver() {
     timer->stop();
     gameov=true;
     numlines++;
-
+    
     QMessageBox* message = new QMessageBox();
     message->setText("YOU LOSE!");
     message->setStandardButtons(QMessageBox::Ok);
@@ -648,10 +648,9 @@ void MainWindow::gameOver() {
 
     QString userr = user->text();
     username = userr.toStdString();
-
+    
     names.push_back(username);
     scores.push_back(points);
-    
     ofstream ofile("file.txt");
     if (ofile.is_open()) {
         for (unsigned int x=0; x<names.size(); x++) {
@@ -660,9 +659,21 @@ void MainWindow::gameOver() {
         }
         ofile.close();
     }
+  /* for (int i=0; i<planes.size();i++){
+   	delete planes[i];
+   }
+   for (int i=0; i<birds.size();i++){
+   	delete birds[i];
+   }
+   for (int i=0; i<blues.size();i++){
+   	delete blues[i];
+   }
+   */
+   
     showHighScores();
     names.clear();
     scores.clear();
+
 }
 void MainWindow::read() {
     ifstream myfile ("file.txt");

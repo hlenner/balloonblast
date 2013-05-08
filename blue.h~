@@ -27,7 +27,6 @@ class Blue : public Abstract {
   MainWindow *gui;
   void move(int dir);
   void movefast(int dir);
-  void level3(int dir);
   QGraphicsScene *scene2;
   void loseLife();
   double getX();

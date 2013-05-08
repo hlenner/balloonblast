@@ -501,7 +501,7 @@ void MainWindow::showHighScores() {
             score1=new QLabel(view);
             score1->setGeometry(450, 300, 150, 50);
             score1->setText(str);
-            for (unsigned int d=0; d<scores.size(); d++) {
+            for (int d=0; d<scores.size(); d++) {
                 if (scores[d]==max) {
                     QString nam= QString::fromStdString(names[d]);
                     name1=new QLabel(view);

@@ -1,5 +1,5 @@
-#ifndef Blue_H
-#define Blue_H
+#ifndef BIRD_H
+#define BIRD_H
 #include <iostream>
 #include <map>
 #include <functional>
@@ -12,29 +12,28 @@
 #include <qapplication.h>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsPixmapItem>
-#include <QObject>
 #include "abstract.h"
-/** The Blue class which sets up the balloon objects 
+#include <QPointF>
+
+/** The bird class which sets up the bird object
 @author Haley Lenner
 */
+
 class MainWindow;
 
-class Blue : public Abstract {
-
+class Bird : public Abstract
+{
  public:
-  Blue();
-  Blue(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene);
+  Bird();
+  Bird(int x, int y, QPixmap* image, MainWindow *t, QGraphicsScene *scene);
   MainWindow *gui;
-  void move(int dir);
-  void movefast(int dir);
-  void level3(int dir);
-  QGraphicsScene *scene2;
+  void move();
+  void movefast();
   void loseLife();
+  QGraphicsPixmapItem *xx;
   double getX();
-  double getY();
-  int x;
   /** Destructor */
-  ~Blue();
+  ~Bird();
 
   //bool win();
   
@@ -42,9 +41,7 @@ class Blue : public Abstract {
   void blowup();
  private:
   QPixmap *bd;
-  int _x;
-  int _y;
-  
+  double _x;
   
 };
 

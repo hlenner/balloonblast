@@ -29,6 +29,7 @@ class Bird : public Abstract
   MainWindow *gui;
   void move();
   void movefast();
+  void level3();
   void loseLife();
   QGraphicsPixmapItem *xx;
   double getX();

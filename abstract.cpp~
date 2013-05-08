@@ -1,0 +1,49 @@
+#include <iostream>
+#include <iomanip>
+#include <map>
+#include <set>
+#include <cmath>
+#include <cstdlib>
+#include "abstract.h"
+#include <QGraphicsSceneMouseEvent>
+#include <string>
+#include <QString>
+#include <QPixmap>
+#include "MainWindow.h"
+#include <QGraphicsScene>
+
+using namespace std;
+
+Abstract::Abstract(){
+	
+	
+}
+Abstract::Abstract(int x, int y, QPixmap *image, MainWindow *t, QGraphicsScene *scene) {
+	//pic = new QPixmap;
+	//pic = image;
+	setPixmap(*image);
+	setPos(x, y);
+	gui=t;
+}
+Abstract::~Abstract(){
+
+}
+/*void Abstract:: mousePressEvent(QGraphicsSceneMouseEvent *event){
+cout << "HI" << endl;
+    if (event->button() == Qt::LeftButton) {
+    cout << "HI" << endl;
+    gui->mainWindowloselife(this);
+	scene2->removeItem(this);
+	gui->points=gui->points+10;
+	cout << "Points: " <<gui->points<< endl;
+    }
+}*/
+//void Abstract::loseLife(){
+
+//}
+/*int Abstract::getX(){
+return x_;
+}
+int Abstract::getY(){
+return y_;
+}*/

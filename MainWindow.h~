@@ -60,7 +60,6 @@ public:
     int objects;
     vector<Blue*> blues;
     vector<Plane*> planes;
-    vector<Powerup*> powers;
     vector<Cloud*> clouds;
     vector<Bird*> birds; 
     vector<int> scores;
